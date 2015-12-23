@@ -381,7 +381,10 @@ namespace Amazon.Runtime.Internal.Transform
                 }
             }
 
-            bool result = XmlReader.ReadState != ReadState.EndOfFile;
+            bool result = XmlReader.ReadState != ReadState.EndOfFile &&
+                          XmlReader.ReadState != ReadState.Error &&
+                          XmlReader.ReadState != ReadState.Closed;
+
             return result;
         }
 
